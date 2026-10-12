@@ -1,0 +1,16 @@
+from/join    to first select the soource for the data
+   
+where       filter the data
+
+group by    grouping
+
+having      again filtering
+
+select/window function      window function calculated when select runs
+
+distinct            
+
+order by
+
+limit/offset
+
