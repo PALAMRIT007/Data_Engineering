@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk/usr/include/c++/v1",
+                "/Library/Developer/CommandLineTools/usr/lib/clang/16/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk/usr/include",
+                "/Library/Developer/CommandLineTools/usr/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk/System/Library/Frameworks (framework directory)"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+    "/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks"
+]
+        }
+    ],
+    "version": 4
+}
