@@ -24,3 +24,10 @@ from pdt_pairs
 group by p1,p2 
 having cnt >0     --> if mentioned this, then use it, otherwise just go with order by
 order by cnt desc
+
+
+-- simple method
+select *
+from customer_history 
+where customer_id=XX 
+and date 'YYYY-ZZ-XX' between effective_from and coalesce(effective_to,date '9999-12-31');
