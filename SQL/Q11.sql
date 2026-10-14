@@ -23,4 +23,11 @@ and (effective_to is null or effective_to >= given_date)
 and customer_id = id
 
 
+-- simple method
+select *
+from customer_history 
+where customer_id=XX 
+and date 'YYYY-ZZ-XX' between effective_from and coalesce(effective_to,date '9999-12-31');
+
+
 
