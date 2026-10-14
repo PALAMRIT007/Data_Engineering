@@ -1,0 +1,97 @@
+#workflow management tool
+
+#workflow: a series of tasks that needs to be executed in a speific order
+
+#DAG -- Directed Acyclic Graph (defines the blueprint, task do the actual transformation/work)
+Directed --> tasks moves in one direction
+Acyclic  --> there are no loops, no task is looping back to another previous task
+Graph    --> graphical representation of tasks
+
+#Operators: functions provided by the airflow, to help create the tasks.
+we can use all of these functions to create tasks and do all the work
+
+popular Operators
+
+BashOperator - executes a bash command
+PythonOperator - calls an arbitrary Python function
+EmailOperator  - sends an Email 
+SnowflakeOperator - for cloud data tasks.
+
+Use the @task decorator to execute an arbitrary Python function. It doesn’t support rendering jinja 
+templates passed as arguments.
+
+#Diff in PythonOperator and using @task
+TaskFlow equivalent of PythonOperator: Instead of explicitly instantiating a PythonOperator and 
+passing your function into it (e.g., t = PythonOperator(python_callable=my_func)), you can simply 
+place the @task decorator above any standard Python function to turn it into an Airflow task. 
+It is a cleaner, more modern way to write Python-based tasks.
+
+#Executors: how will your tasks runs, to run the entire dag, we have executors.
+
+1. sequential executors --> to run the tasks sequentially.
+
+2. Local Executors
+    Airflow tasks are run locally within the scheduler process.
+    Pros: Very easy to use, fast, very low latency, and few requirements for setup.
+
+
+3. Remote Executors
+    Remote executors can further be divided into two categories:
+    Queued/Batch Executors
+    Airflow tasks are sent to a central queue where remote workers pull tasks to execute. 
+    Often workers are persistent and run multiple tasks at once.
+
+
+#How do airflow schedule tasks
+airflow schedules the tasks using the scheduler component.it reads all active DAGs
+and checks there schedule intervals and determine what tasks neeeds to run first.n
+
+
+we define the tming using cron_expressions or resets like @daily, @hourly, @weekly
+then executors will decide how the tasks run -- locally, celeary workers, kubernetes pods etc.
+
+#Airflow Architecture
+1.scheduler: schedule jobs and triggers tasks. 
+2. executors: run the tasks(local, celeary)
+3.  web server: provide the UI to monitor and manage DAGs
+4.Metadata database: stores DAGs runs,task states, and configurations
+
+Sensors: sensors are special opertors hat wait for a condition to be true efore continuing
+EX.
+fileSensor: waits for a file to arrive.
+ExternalTaskSensor: waits for another DAG to finish
+TimeSensor: waits untill a specific time
+
+task dependencies
+directly put them in the python dag file
+                task1 >> task2
+                or 
+                task2.set_upstream(task1)
+
+this tells airflow that task2 depends on task1
+
+#Variables: store kkey value pairs such as file path or configuration settings
+connections:  store credentials for APIs, databases or cloud services
+
+#Xcoms: cross communications, its how tasks share #small piece of data with each other.
+ex.. one file extracts a file name and another uses it, thats done via Xcom
+example code:
+
+ti.xcom_push(key='file_name',
+value = 'data_2026.csv'
+)
+
+ti. xcom_pull(key= 'file_name')
+
+Best practises:
+1. keep tasks small and focused, one clear purpose er task.
+2. avoid writing heavy logics direclty in DAGs - calls external scripts instead.
+3. Always version control your DAG in git.
+4. adding alert and monitoring
+5. use catchup=False  , if we dont want historical runs  execute.
+
+
+
+
+
+
