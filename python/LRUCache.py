@@ -11,8 +11,8 @@
 from collections import OrderedDict
 
 class LRUCache:
-    def __init__(self, capacity):
-        self.capacity = capacity
+    def __init__(self, capacity):    # this is similer to constructor in c++
+        self.capacity = capacity      # self represent the current object, similer to this in c++
         self.cache = OrderedDict()
 
     def get(self, key):
@@ -27,7 +27,7 @@ class LRUCache:
         if key in self.cache:
             self.cache.move_to_end(key)
         
-        self.cache[key] = value
+        self.cache[key] = value       # ya to update hoga ya insert
 
         if len(self.cache) > self.capacity:
             self.cache.popitem(last=False)
