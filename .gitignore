@@ -1,3 +1,32 @@
 venv/
 __pycache__/
 .DS_Store
+
+
+# Airflow runtime / metadata DB (can contain connections, variables, tokens)
+Airflow/Project/airflow/airflow.db
+Airflow/Project/airflow/airflow.db-shm
+Airflow/Project/airflow/airflow.db-wal
+
+# Generated admin password
+Airflow/Project/airflow/simple_auth_manager_passwords.json.generated
+
+# Logs (large, may contain sensitive output)
+Airflow/Project/airflow/logs/
+
+# Config (can hold secrets, auto-generated)
+Airflow/Project/airflow/airflow.cfg
+
+# Generated data
+# Airflow/Project/airflow/data/. pushing this also , as maybe be required to run another DAGs.
+
+# Secrets
+.env
+*.env
+
+# Python extras
+*.pyc
+.venv/
+
+# Editor
+.vscode/

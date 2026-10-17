@@ -1,0 +1,22 @@
+These are the challenges i faced while working on Airflow Project:
+
+
+- Airflow 2 tutorial code breaking on Airflow 3 (days_ago, schedule_interval, provide_context, DummyOperator, old operator import paths, SnowflakeOperator removed)
+- DAG not showing in UI because of import errors
+- Docker daemon not running, so docker build failed
+- Wrong paths inside the container (/airflow vs /opt/airflow)
+- Provider packages missing from the image (github, smtp, amazon), fixed via requirements.txt and rebuild
+- Missing Connections (smtp_default, github_default) causing task failures
+- False green run because end_date was in the past, so no task instances were created
+- Dead external API (DNS failure) mistaken for a code bug
+- API key exposure risk in screenshots and code, used variables
+- Leading whitespace in a Variable value causing curl error 3
+- Variable values masked as *** in the UI, so the real value was hidden
+- Invalid date (2025-06-31) in the Snowflake query, a data error and not an Airflow error, snowflake marked it query failure
+- depends_on_past task waiting because of a failed earlier scheduled run
+- Trigger rule confusion (all_failed counts upstream_failed, checks direct upstreams only)
+- Teardown task succeeding while the DAG run is still marked failed
+- LatestOnly and catchup=True creating multiple backfill runs
+- XCom page showing automatic return_value rows from Bash and SQL operators
+- Undefined helper function (raise_exception) causing NameError instead of the intended error
+- Debugging approach: dag-processor logs, task logs, import errors page, python -m pip list inside the container, od -c to inspect hidden characters
