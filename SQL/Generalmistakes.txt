@@ -12,3 +12,5 @@ A Common Table Expression (CTE) is only valid and visible for the single SQL sta
 immediately follows it. Once that statement executes, the CTE is out of scope and cannot be 
 referenced again.
 
+using where , it is filtering after the join, to filter before the join use and after on 
+between clause take both the values inclusive. 
