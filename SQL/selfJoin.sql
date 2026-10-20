@@ -55,6 +55,7 @@ where not exists (
 
 -- wrong query, as the inner query might have the null values.
 
+-- wrong: breaks if any employees.dept_id is NULL
 select d.dept_name
 from departments d
-where not exists (select 1 from employees e where e.dept_id = d.dept_id);
+where d.dept_id not in (select e.dept_id from employees e); -- it can ne safe if i put where e.dept_id is not null at the end.

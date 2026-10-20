@@ -26,8 +26,8 @@ left join dim_customer_scd d
 on o.customer_id = d.customer_id
 where o.order_date between d.valid_from and d.valid_to
 
--- using where , it is filtering after the join, to filter before the join use and after on 
--- between clause take both the values inclusive. 
+-- using where , it is filtering after the join, to filter before the join use "and" after "on" 
+-- between clause take both the values inclusive, but question aksing to keep valid_to as exclusive.
 select o.order_id, o.order_date, o.amount, d.city
 from orders o 
 left join dim_customer_scd d 

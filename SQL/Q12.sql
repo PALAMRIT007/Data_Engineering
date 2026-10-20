@@ -25,7 +25,7 @@ where sale_date >= dateadd(month, -2, current_date)  -->early filteration, so mo
 -- sql
 -- date_trunc('month', date '2026-10-13')   -- 2026-10-01
 -- date_trunc('year',  date '2026-10-13')   -- 2026-01-01
--- date_trunc('week',  date '2026-10-13')   -- start of that week (Monday in most engines)
+-- date_trunc('week',  date '2026-10-13')   -- start of that week (Monday in most engines), but the return will be in date format.
 -- date_trunc('day',   timestamp '2026-10-13 18:45:00')   -- 2026-10-13 00:00:00
 
 

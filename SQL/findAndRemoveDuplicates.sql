@@ -30,7 +30,7 @@ where rnk = 1
 -- below query will generate error, 
 
 delete from cust_raw
-where id in (select id from ranked where rnk > 1)
+where id in (select id from ranked where rnk > 1)       -- bcz the ranked CTE is already used in a select query
 
 --for solution, write an inner query, or define the cte again.
 --below will work.

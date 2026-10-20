@@ -7,7 +7,7 @@
 
 -- need  running total ,
 -- bc range rehta hai default me
--- when order by mentione --> running sum(range between unbounded preceding and current row)
+-- when order by mentioned --> running sum(range between unbounded preceding and current row)
 -- when order by not memntioned --> full partition(range between unbounded preceding and unbounded following)
 
 

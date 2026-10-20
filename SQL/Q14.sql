@@ -18,7 +18,7 @@ group by product_id
 select coalesce(i.product_id,t.product_id) as product_id,
 coalesce(i.qty, 0) as snapshot_qty,   --> remove coalesce if you want null instead of 0
 coalesce(t.total_qty, 0) as transaction_qty, 
-coalesce(i.qty-t.total_qty, i.qty,t.total_qty,0) as difference
+coalesce(i.qty, 0) - coalesce(t.total_qty, 0) as difference
 from inventory_snapshot i 
 full outer join agg_qty t 
 on i.product_id = t.product_id
