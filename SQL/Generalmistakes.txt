@@ -1,0 +1,4 @@
+check column names as given in question.
+check order by, i ususally format to put desc where required.
+check frame when using sum(running total), last_value, as default frame changes based on clause present 
+and defualt is range not rows.
