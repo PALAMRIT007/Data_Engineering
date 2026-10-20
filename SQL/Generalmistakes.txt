@@ -2,3 +2,4 @@ check column names as given in question.
 check order by, i ususally format to put desc where required.
 check frame when using sum(running total), last_value, as default frame changes based on clause present 
 and defualt is range not rows.
+Column names should be written in "" double quotes, and normal string values in '' single quotes
