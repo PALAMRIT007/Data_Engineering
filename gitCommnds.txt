@@ -1,0 +1,14 @@
+AMEND CHANGES TO LAST COMMIT (KEEPING SAME MESSAGE)
+
+git add .
+git commit --amend --no-edit
+git push origin main --force-with-lease
+
+Stashing (Saving Work Temporarily)
+git stash
+git stash apply
+
+git stash pop
+Reapply your most recently stashed changes and remove them from the stash list.
+
+git stash list
